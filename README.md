@@ -37,3 +37,29 @@ MODEL_DIR="/path/to/models_hg38"
 DATA_DIR="/path/to/BAM_files"
 OUTPUT_DIR="./MSI_Results"
 
+🚀 Usage
+A. Run msisensor (paired tumor/normal)
+Prepare sample_pairs.txt with format:
+H0247:FH247:
+H0266:FH266:
+H0247 = tumor sample ID
+FH247 = normal sample ID
+Submit jobs:
+sbatch submit.sh config.env sample_pairs.txt run_msisensor.sh
+
+B. Run msisensor2 (tumor-only)
+Reuse sample_pairs.txt, and only the first column (tumor ID) will be extracted:
+H0247:FH247:
+H0266:FH266:
+
+Submit jobs:
+sbatch submit.sh config.env sample_ids.txt run_msisensor2.sh
+
+bash
+複製
+編輯
+sbatch submit.sh config.env sample_ids.txt run_msisensor2.sh
+✅ Note: You may need to create sample_ids.txt if not using paired mode.
+
+📂 Output
+MSI result files will be written to the directory specified in OUTPUT_DIR.
